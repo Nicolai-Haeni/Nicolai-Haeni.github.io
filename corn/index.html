@@ -1,41 +1,165 @@
-<!DOCTYPE html>
+i<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-          content="Continuous Object Representation Networks: Novel View Synthesis without 3D or Target View Supervision">
+          content="Continuous Object Representation Networks: Novel View Synthesis without Target View Supervision">
     <meta name="author" content="Nicolai Haeni, Selim Engin, Jun-Jee Chao, Volkan Isler">
 
-    <title>Continuous Object Representation Networks: Novel View Synthesis without 3D or Target View Supervision</title>
+    <title>Continuous Object Representation Networks: Novel View Synthesis without Target View Supervision</title>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+
+
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
-
-<!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
 </head>
 
 <body>
 <div class="container">
 
     <div class="jumbotron">
-	    <h2>Continuous Object Representation Networks: Novel View Synthesis without 3D or Target View Supervision</h2>
+	    <h2>Continuous Object Representation Networks: Novel View Synthesis without Target View Supervision</h2>
 	    <h2>NeurIPS 2020</h2>
-        <p iclass="text-center">
+        <p class="authors">
             <a href="https://nicolaihaeni.github.io/">Nicolai Häni</a>,
             <a href="https://ksengin.github.io/">Selim Engin</a>,
-	    <a> Jun-Jee Chao</a>,
+            <a href="https://www.linkedin.com/in/jun-jee-chao-2b210915b/"> Jun-Jee Chao</a>,
             <a href="https://www-users.cs.umn.edu/~isler/">Volkan Isler</a>
         </p>
-
-        <p>
-            <a href="">Paper</a>
-            <a href="">Code</a>
-            <a href="">Datasets</a>
-            <a href="">Trained Models</a>
+        <div class="btn-group", role="group" aria-label="Top menu">
+            <a class="btn btn-primary" href="https://arxiv.org/abs/2007.15627">Paper</a>	    
+            <a class="btn btn-primary" href="https://github.com/nicolaihaeni/corn">Code</a>	    
+            <a class="btn btn-primary" href="">Datasets</a>	    
+            <a class="btn btn-primary" href="">Trained Models</a>	    
+        </div>
     </div>
+</div>
+
+<div class="container">
+	<div class="section">
+		<h2> Paper Video</h2>
+		<hr>
+		<div class="cvcontainer"> 
+			<iframe width="884" height="497" class="center" src="https://www.youtube.com/embed/qqHI1QdswZc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+		<hr>
+		<p>
+			We present Continuous Object Representation Networks (CORNs), a continuous, 3D geometry aware scene representation that can be learned from as little as two images per object. CORNs represent object geometry and appearance by conditionally extracting global and local features and using transformation chains and 3D feature consistency as self-supervision, requiring 50×fewer data during training than the current state-of-the-art models. By formulating the problem of novel view synthesis as a neural rendering algorithm, CORNs are end-to-end trainable from only two source views, without access to 3D data or 2D target views. This formulation naturally generalizes across scenes, and our auto-encoder-decoder framework avoids latent code optimization at test time, improving inference speed drastically.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>Novel View Synthesis</h2>
+		<hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/novel_views.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+		<p>
+        CORNs can be trained with only two source images per object on a variety of categories. We show that CORN generated novel views of cars, chairs and human faces. CORNs generalize naturally across objects within the same category, requiring no additional training. To perform novel view synthesis, we use a randomly selected image of an object, generate the intermediate scene representation and project it to the target view.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>Baseline comparisons</h2>
+		<hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/baselines.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+		<p>
+        We compare CORN against multiple state of the art baseline methods. Namely, we compare against <a href="https://openaccess.thecvf.com/content_ICCV_2019/html/Xu_View_Independent_Generative_Adversarial_Network_for_Novel_View_Synthesis_ICCV_2019_paper.html">VIGAN</a>, <a href="https://arxiv.org/abs/1904.06458">TBN</a> and <a href="https://arxiv.org/abs/1906.01618">SRN</a>. In contrast to the baselines, our model does not use target view supervision and only uses two of the 108 images per object. Still, our model shows comparable level of detail.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>Out-of-domain Generalization</h2>
+		<hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/out_of_domain.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+		<p>
+        CORN generalizes to some degree beyond the training data domain. Here we use a model trained on the synthetic <a href="https://www.shapenet.org/">ShapeNet v2 dataset</a> and test it on images of the <a href="https://ai.stanford.edu/~jkrause/cars/car_dataset.html">Stanford CARS dataset</a> without retraining. Our model generates novel views that preserve appearance and shape parameters.
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>3D Reconstruction</h2>
+		<hr>
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                    <source src="img/3d.mp4" type="video/mp4">
+                </video>
+            </div> 
+        </div>
+		<p>
+        In addition to novel view synthesis, a possible application of our method is to perform single-image 3D reconstruction. We synthesize $N$ novel views on the viewing hemisphere from a single image. From these images, we sample $k$ 3D points uniformly at random from a cubic volume. Our goal is to predict the occupancy of each of these $k$ points. 
+		</p>
+	</div>
+
+    <div class="section">
+    	<h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+            	<a href="https://arxiv.org/pdf/2007.15627" class="list-group-item">
+                	<img src="img/paper_thumbnail.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+           		</a>
+        	</div>
+   		</div>
+  	</div>
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+            @inproceedings{haeni2020corn,
+                author = {H{\"a}ni, Nicolai
+                          and Engin, Selim
+                          and Chao, Jun-Jee
+                          and Isler, Volkan},
+                title = {Continuous Object Representation Networks:
+                         Novel View Synthesis without Target View Supervision},
+                booktitle = {Proc. NeurIPS},
+                year={2020}
+            }
+        </div>
+    </div>
+
+	<hr>
+
+	<footer>
+    	<p>Send feedback and questions to <a href="https://nicolaihaeni.github.io/">Nicolai Häni</a></p>
+    </footer>
+
+</div>
 </body>
 </html>
